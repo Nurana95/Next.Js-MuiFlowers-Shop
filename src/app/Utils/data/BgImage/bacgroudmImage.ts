@@ -1,0 +1,66 @@
+export const backgroundLayers = [
+  {
+    image: '/fl.png',
+    zIndex: 5,
+    size: '65%',
+    marginLeft: '-20%',
+    marginTop: { xs: '50%', md: '-4%' },
+  },
+  {
+    image: '/0202.png',
+    zIndex: 2,
+    size: '35%',
+    marginTop: { xs: '20%', md: '7%' },
+    position: 'right top',
+  },
+  {
+    image: '/Ellipse45.png',
+    zIndex: 2,
+    size: { xs: '144%', md: '40%' },
+    marginTop: { xs: '-44%', md: 0 },
+  },
+  {
+    image: '/Ellipse45.png',
+    zIndex: 2,
+    size: '40%',
+    marginTop: '66%',
+  },
+  {
+    image: '/Ellipse32.png',
+    zIndex: 2,
+    size: '40%',
+    marginTop: '50%',
+  },
+  {
+    image: '/Ellipse441.png',
+    zIndex: 1,
+    size: '20%',
+    position: 'right top',
+  },
+  {
+    image: '/Ellipse52.png',
+    zIndex: 1,
+    size: '60%',
+    marginTop: '10%',
+    position: 'right center',
+  },
+  {
+    image: '/Ellipse440.png',
+    zIndex: 1,
+    size: '20%',
+    marginTop: '10%',
+    position: 'right bottom',
+  },
+  {
+    image: '/Ellipse42.png',
+    zIndex: 1,
+    size: '70%',
+    position: 'right bottom',
+  },
+  {
+    image: '/01.png',
+    zIndex: 1,
+    size: '20%',
+    position: 'left bottom',
+  },
+];
