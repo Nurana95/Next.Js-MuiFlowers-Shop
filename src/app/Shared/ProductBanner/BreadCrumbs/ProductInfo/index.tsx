@@ -55,7 +55,7 @@ export default function ProductInfo({ product, isMobile, backButton }: Props) {
             <Grid size={{ xs: 12 }} mt={4} container spacing={{ xs: '10px', md: '30px' }}>
                 <AppAddToCartButton product={product} />
 
-                <InDecreaseBanner width={{ xs: 108, lg: 160 }} height={55} />
+                <InDecreaseBanner width={{ xs: 108, md: 160 }} height={55} />
             </Grid>
         </Grid>
     );
