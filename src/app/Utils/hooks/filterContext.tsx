@@ -129,7 +129,7 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
         break;
       case 'popular':
       default:
-        result = result.sort((a, b) => b.id - a.id);
+        result = result.sort((a, b) => Number(b.id) - Number(a.id));
         break;
     }
 
