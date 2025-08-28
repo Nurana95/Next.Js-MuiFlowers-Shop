@@ -49,7 +49,7 @@ export default function ShoppingBag() {
                         <ShoppingCartIcon count={count} />
                     </Box>
 
-                    <CartPage onClose={() => setOpen(false)} /></Box>
+                    <CartPage /></Box>
             </Drawer>
         </>
     )
