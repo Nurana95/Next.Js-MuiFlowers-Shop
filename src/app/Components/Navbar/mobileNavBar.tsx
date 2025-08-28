@@ -6,13 +6,12 @@ import {
   IconButton,
   Drawer,
   Stack,
-  Badge,
   Divider,
 } from '@mui/material';
 import Link from 'next/link';
 import MenuIcon from '../../Styles/Svg/bar.svg';
 import CloseIcon from '../../Styles/Svg/close.svg';
-import { logoIcon, ShoppingBagIcon } from '../../Styles/Svg/SvgIcon';
+import { logoIcon, } from '../../Styles/Svg/SvgIcon';
 import { MobileNavLinks } from '../../Utils/data/linkData';
 import { useMobileDrawer } from '../../Utils/hooks/useMobileDrawer';
 import { SearchSet } from '../../Utils/hooks/search';

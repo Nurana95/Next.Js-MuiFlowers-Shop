@@ -3,16 +3,13 @@
 import {
   Box,
   Chip,
-  useTheme,
-  useMediaQuery,
+
 } from '@mui/material';
 import { useFilterContext } from '@/app/Utils/hooks/filterContext';
 import { category } from '@/app/Utils/data/categories';
 
 export default function Index() {
   const { handleToggle, filters } = useFilterContext();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
 
   return (
