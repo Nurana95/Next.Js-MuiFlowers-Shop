@@ -1,5 +1,5 @@
 'use client'
-
+import { useState } from 'react'
 import BasketBanner from '@/app/Shared/basketBanner'
 import { DeleteIcon } from '@/app/Styles/Svg/delete'
 import { useCart } from '@/app/Utils/hooks/useCartContex'
@@ -7,14 +7,14 @@ import { Box, Grid, IconButton, Stack, Typography } from '@mui/material'
 import OrderSummaryWithExtras from './OrderSummaryWithExtras'
 import { colors } from '@/app/Styles/colors'
 import Bgimage from './bgimage'
-interface CartPageProps {
-    onClose: () => void
-}
 
-export default function CartPage({ onClose }: CartPageProps) {
+
+export default function CartPage() {
     const { items } = useCart()
 
+    const [isOpen, setIsOpen] = useState(true)
 
+    if (!isOpen) return null
 
     return (
 
@@ -29,9 +29,7 @@ export default function CartPage({ onClose }: CartPageProps) {
 
             <Grid container size={12} mb={{ xs: '10px', md: '14px' }} justifyContent='space-between'>
                 <Typography variant="subtitle17">Ваша корзина</Typography>
-                <IconButton onClick={() => {
-                    onClose()
-                }}>{DeleteIcon}</IconButton> </Grid>
+                <IconButton onClick={() => setIsOpen(false)}>{DeleteIcon}</IconButton> </Grid>
             {items.length === 0 && <Typography>Корзина пуста</Typography>}
 
             <Stack justifyContent='space-between' sx={{ height: '100%' }}>
