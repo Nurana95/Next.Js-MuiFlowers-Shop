@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { CircularProgress, styled } from '@mui/material';
 
 // Кастомизация стилей CircularProgress
 const CustomCircularProgress = styled(CircularProgress)(({ theme }) => ({
-  color: theme.palette.primary.main, // Цвет из вашей MUI темы
+  color: theme.palette.primary.main,
   thickness: 5,
   size: 50,
 }));
@@ -20,39 +20,52 @@ function useNavigationEvent(onStart: NavigationCallback, onComplete: NavigationC
 
   useEffect(() => {
     onStart();
-    const timer = setTimeout(() => onComplete(), 100); 
-
+    const timer = setTimeout(() => onComplete(), 100);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, searchParams]);
 }
 
+const LoadingIndicatorInner: React.FC<{ onStart: () => void; onComplete: () => void }> = ({
+  onStart,
+  onComplete,
+}) => {
+  useNavigationEvent(onStart, onComplete);
+  return null;
+};
+
 const LoadingIndicator: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
-  useNavigationEvent(
-    () => setLoading(true),
-    () => setLoading(false)
-  );
+  return (
+    <>
+      <Suspense fallback={null}>
+        <LoadingIndicatorInner
+          onStart={() => setLoading(true)}
+          onComplete={() => setLoading(false)}
+        />
+      </Suspense>
 
-  return loading ? (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        background: 'rgba(0, 0, 0, 0.5)',
-        zIndex: 9999,
-      }}
-    >
-      <CustomCircularProgress />
-    </div>
-  ) : null;
+      {loading && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 9999,
+          }}
+        >
+          <CustomCircularProgress />
+        </div>
+      )}
+    </>
+  );
 };
 
 export default LoadingIndicator;
